@@ -4,6 +4,8 @@ services:
     image: lscr.io/linuxserver/code-server:4.13.0
     container_name: code-server
     environment:
+      - VIRTUAL_HOST=codeshare.mpy.az
+      - VIRTUAL_PORT=8443
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Warsaw
@@ -18,3 +20,7 @@ services:
     ports:
       - "8443:8443"
     restart: unless-stopped
+
+networks:
+  default:
+    name: nginx-proxy
